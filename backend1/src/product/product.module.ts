@@ -20,6 +20,14 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
           },
         },
       },
+      {
+        name: 'BOOK_SERVICE',
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'],
+          queue: 'books_queue',
+        },
+      },
     ]),
   ],
   controllers: [ProductController],

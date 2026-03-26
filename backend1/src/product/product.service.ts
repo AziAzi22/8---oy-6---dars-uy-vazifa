@@ -11,6 +11,7 @@ export class ProductService {
   constructor(
     @InjectRepository(Product) private productRepo: Repository<Product>,
     @Inject('MATH_SERVICE') private readonly client: ClientProxy,
+    @Inject('BOOK_SERVICE') private readonly bookClient: ClientProxy
   ) {}
 
   async create(createProductDto: CreateProductDto) {
@@ -22,6 +23,10 @@ export class ProductService {
   async findAll() {
     this.client.emit('hello', 'hello from backend1');
     return await this.productRepo.find();
+  }
+
+  async getAllBooks() {
+    return this.bookClient.send('getAllBooks', {});
   }
 
   async findOne(id: number) {
