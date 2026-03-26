@@ -10,7 +10,7 @@ import {
 import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-import { MessagePattern } from '@nestjs/microservices';
+import { EventPattern } from '@nestjs/microservices';
 
 @Controller('book')
 export class BookController {
@@ -21,7 +21,7 @@ export class BookController {
     return this.bookService.create(createBookDto);
   }
 
-  @MessagePattern('getAllBooks')
+  @EventPattern('getAllBooks')
   async handleGetAllBooks() {
     console.log('Backend3 received request for books');
     return await this.bookService.findAll();

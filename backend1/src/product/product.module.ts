@@ -14,7 +14,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.RMQ,
         options: {
           urls: ['amqp://localhost:5672'],
-          queue: 'product_queue',
+          queue: 'products_queue',
           queueOptions: {
             durable: false,
           },
@@ -25,7 +25,10 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.RMQ,
         options: {
           urls: ['amqp://localhost:5672'],
-          queue: 'books_queue',
+          queue: 'book_queue',
+          queueOptions: {
+            durable: false,
+          },
         },
       },
     ]),
